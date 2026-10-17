@@ -3,56 +3,42 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>TUMAI-SA More Than Google</title>
+<title>TUMAI-SA Fast</title>
 <style>
-*{box-sizing:border-box} body{font-family:sans-serif;margin:0;height:100vh;display:flex;flex-direction:column;background:#000}
-header{background:#000;color:#00E5FF;padding:10px;text-align:center;font-weight:900;border-bottom:2px solid #00E5FF;box-shadow:0 0 15px #00E5FF}
+*{box-sizing:border-box}body{font-family:sans-serif;margin:0;height:100vh;display:flex;flex-direction:column;background:#000}
+header{background:#000;color:#00E5FF;padding:10px;text-align:center;font-weight:900;border-bottom:2px solid #00E5FF}
 #bar2{display:flex;gap:5px;padding:6px;background:#111}
 select{flex:1;padding:8px;border-radius:20px;border:1px solid #00E5FF;background:#222;color:#fff}
 #tools{display:flex;gap:5px;overflow:auto;padding:6px;background:#222}
 #tools button{padding:6px 10px;border-radius:20px;border:1px solid #444;background:#333;color:#fff;font-size:11px;white-space:nowrap}
-#tools button.active{background:#00E5FF;color:#000;box-shadow:0 0 10px #00E5FF}
-#chat{
-  flex:1;overflow:auto;padding:12px;display:flex;flex-direction:column;gap:10px;
-  background-color:#000;
-  background-image: url('logo.jpg');
-  background-size: 65% auto;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  position:relative;
-  animation: glowPulse 4s infinite ease-in-out;
-}
-@keyframes glowPulse{
-  0%{background-size:62% auto; filter: brightness(1) drop-shadow(0 0 10px #00E5FF);}
-  50%{background-size:68% auto; filter: brightness(1.3) drop-shadow(0 0 30px #00E5FF) drop-shadow(0 0 60px #00E5FF);}
-  100%{background-size:62% auto; filter: brightness(1) drop-shadow(0 0 10px #00E5FF);}
-}
-#chat::before{content:""; position:absolute; inset:0; background:radial-gradient(circle at center, rgba(0,229,255,0.15) 0%, rgba(0,0,0,0.85) 70%);}
-#chat > *{position:relative; z-index:1;}
-.msg{padding:10px 14px;border-radius:16px;max-width:90%;line-height:1.5;white-space:pre-wrap;font-size:14px;backdrop-filter: blur(1px);}
-.user{align-self:flex-end;background:rgba(0,0,0,0.9);color:#00E5FF;border:1px solid #00E5FF;box-shadow:0 0 8px #00E5FF}
-.bot{align-self:flex-start;background:rgba(243,244,246,0.96);border:1px solid #00E5FF}
+#tools button.active{background:#00E5FF;color:#000}
+#chat{flex:1;overflow:auto;padding:12px;display:flex;flex-direction:column;gap:10px;background:#fff}
+.msg{padding:10px 14px;border-radius:16px;max-width:90%;line-height:1.5;white-space:pre-wrap;font-size:14px}
+.user{align-self:flex-end;background:#000;color:#00E5FF;border:1px solid #00E5FF}
+.bot{align-self:flex-start;background:#f3f4f6;border:1px solid #e5e7eb}
 .msg img{max-width:100%;border-radius:12px;margin-top:8px}
 #bar{display:flex;padding:8px;gap:5px;border-top:1px solid #00E5FF;background:#000;align-items:center}
 input{flex:1;padding:11px 14px;border:1px solid #00E5FF;border-radius:24px;background:#111;color:#fff}
 button.icon{width:42px;height:42px;border-radius:50%;border:1px solid #00E5FF;background:#222;color:#00E5FF;font-size:16px}
-button.send{background:#00E5FF;color:#000;border:0;padding:10px 16px;border-radius:24px;font-weight:900;box-shadow:0 0 15px #00E5FF}
+button.send{background:#00E5FF;color:#000;border:0;padding:10px 16px;border-radius:24px;font-weight:900}
 #preview{display:none;padding:6px;background:#111;gap:6px;align-items:center;color:#fff}
 #preview img{height:50px;border-radius:6px}
 </style>
 </head>
 <body>
-<header>⚡ TUMAI-SA — More Advanced Than Google</header>
+<header>🔥 TUMAI-SA — FAST</header>
 <div id="bar2">
 <select id="langSel">
 <option value="en">🇬🇧 English</option>
 <option value="st">🇿🇦 Sesotho</option>
 <option value="zu">🇿🇦 Zulu</option>
 <option value="af">🇿🇦 Afrikaans</option>
+<option value="nso">🇿🇦 Sepedi</option>
+<option value="tn">🇿🇦 Setswana</option>
 <option value="fa">🇮🇷 فارسی</option>
 <option value="ar">🇸🇦 عربي</option>
 <option value="fr">🇫🇷 Français</option>
+<option value="es">🇪🇸 Español</option>
 </select>
 </div>
 <div id="tools">
@@ -63,14 +49,14 @@ button.send{background:#00E5FF;color:#000;border:0;padding:10px 16px;border-radi
 <button onclick="setMode('code')" id="m-code">💻 Code</button>
 <button onclick="setMode('essay')" id="m-essay">✍️ Essay</button>
 </div>
-<div id="chat"><div class="msg bot">🚀 NOW MORE THAN GOOGLE!
-
-✅ Ask "picture of Dubai" = I MAKE IT
-✅ "Steynsrus" = I MAKE IT
-✅ Any place, person, car, house = I MAKE IT
-No more "sorry can't"!
-
-Try now: "picture of Dubai"</div></div>
+<div id="chat"><div class="msg bot">🌍 All Languages
+📚 Homework + Math
+📱 Viral Posts
+🎨 Make Images
+💻 Code + Essays
+🖼️ See Pictures
+🎙️ Voice
+Just ask in ANY language!</div></div>
 <div id="preview"><img id="prevImg"><button onclick="clearImg()">❌</button></div>
 <div id="bar">
 <button class="icon" onclick="document.getElementById('fileImg').click()">🖼️</button>
@@ -80,66 +66,27 @@ Try now: "picture of Dubai"</div></div>
 </div>
 <input type="file" id="fileImg" accept="image/*" hidden>
 <script>
-let MODE='auto'; let IMG=null;
-let recognition=null; let recognizing=false;
-if('webkitSpeechRecognition' in window || 'SpeechRecognition' in window){
-  const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
-  recognition=new SR(); recognition.continuous=false;
-  recognition.onstart=()=>{recognizing=true; document.getElementById('micBtn').textContent='🔴';};
-  recognition.onend=()=>{recognizing=false; document.getElementById('micBtn').textContent='🎙️';};
-  recognition.onresult=(e)=>{document.getElementById('q').value=e.results[0][0].transcript; ask();};
-}
-function toggleVoice(){
-  if(!recognition){alert('Use Chrome');return;}
-  recognition.lang=document.getElementById('langSel').value;
-  if(recognizing) recognition.stop(); else recognition.start();
-}
-function speak(t){ speechSynthesis.cancel(); let u=new SpeechSynthesisUtterance(t.slice(0,300)); u.lang=document.getElementById('langSel').value; speechSynthesis.speak(u); }
-function setMode(m){MODE=m; document.querySelectorAll('#tools button').forEach(b=>b.classList.remove('active')); document.getElementById('m-'+m).classList.add('active');}
-function clearImg(){IMG=null; document.getElementById('preview').style.display='none';}
-document.getElementById('fileImg').addEventListener('change',e=>{const f=e.target.files[0]; if(!f)return; const r=new FileReader(); r.onload=ev=>{IMG=ev.target.result; document.getElementById('prevImg').src=IMG; document.getElementById('preview').style.display='flex';}; r.readAsDataURL(f);});
-
-// *** THIS IS THE FIX - MORE THAN GOOGLE ***
-function isImageRequest(text){
-  const t=text.toLowerCase();
-  return t.includes('picture') || t.includes('photo') || t.includes('image') || t.includes('pic of') || t.includes('send me') || t.includes('show me') || t.includes('dubai') || t.includes('steynsrus') || t.includes('تصویر') || t.includes('عکس');
-}
-
+let MODE='auto';let IMG=null;let recognition=null;let recognizing=false;
+if('webkitSpeechRecognition' in window||'SpeechRecognition' in window){const SR=window.SpeechRecognition||window.webkitSpeechRecognition;recognition=new SR();recognition.continuous=false;recognition.onstart=()=>{recognizing=true;document.getElementById('micBtn').textContent='🔴';};recognition.onend=()=>{recognizing=false;document.getElementById('micBtn').textContent='🎙️';};recognition.onresult=(e)=>{document.getElementById('q').value=e.results[0][0].transcript;ask();};}
+function toggleVoice(){if(!recognition){alert('Use Chrome');return;}recognition.lang=document.getElementById('langSel').value;if(recognizing)recognition.stop();else recognition.start();}
+function speak(t){speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(t.slice(0,250));u.lang=document.getElementById('langSel').value;speechSynthesis.speak(u);}
+function setMode(m){MODE=m;document.querySelectorAll('#tools button').forEach(b=>b.classList.remove('active'));document.getElementById('m-'+m).classList.add('active');}
+function clearImg(){IMG=null;document.getElementById('preview').style.display='none';}
+document.getElementById('fileImg').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{IMG=ev.target.result;document.getElementById('prevImg').src=IMG;document.getElementById('preview').style.display='flex';};r.readAsDataURL(f);});
+function isImageRequest(t){t=t.toLowerCase();return t.includes('picture')||t.includes('photo')||t.includes('image')||t.includes('pic ')||t.includes('dubai')||t.includes('steynsrus')||t.includes('send me');}
 async function ask(){
-  const input=document.getElementById('q'); const text=input.value.trim(); if(!text && !IMG) return;
-  add(text||"📸",'user'); input.value=''; const imgSend=IMG; const hasImg=!!IMG; clearImg();
-  const langText=document.getElementById('langSel').options[document.getElementById('langSel').selectedIndex].text;
-  add('Thinking...','bot');
-  try{
-    // *** FIX: If it's ANY picture request, make image directly, DON'T ask text AI ***
-    if(isImageRequest(text) || MODE==='image'){
-      let prompt=text.replace(/send me|picture of|pic of|image of|photo of|show me/gi,'').trim();
-      if(prompt.length<3) prompt=text;
-      // 2 engines: Pollinations + Unsplash real photo
-      const seed=Math.floor(Math.random()*100000);
-      const url1="https://image.pollinations.ai/prompt/"+encodeURIComponent("real photo of "+prompt+", ultra realistic, 8k, professional photography")+"?width=1024&height=768&nologo=true&seed="+seed;
-      const url2="https://source.unsplash.com/1024x768/?"+encodeURIComponent(prompt);
-      
-      document.querySelector("#chat .msg.bot:last-child").remove();
-      addHTML("✅ TUMAI created: <b>"+prompt+"</b><br><br>🎨 AI Generated:<br><img src='"+url1+"' onerror=\"this.src='"+url2+"'\" style='border:2px solid #00E5FF;box-shadow:0 0 20px #00E5FF'><br><br>📸 Real Photo Search:<br><img src='"+url2+"' loading='lazy'><br><br><button onclick='speak(`"+prompt.replace(/'/g,'')+"`)'>🔊 Listen</button> <button onclick=\"window.open('"+url1+"','_blank')\">⬇️ Download</button>",'bot');
-      return;
-    }
-
-    // Only if NOT a picture, go to text AI
-    let system=`You are TUMAI-SA by Itumeleng Maphakisa. You CAN do everything including images. Reply in ${langText} language. MODE=${MODE}. Never say sorry can't provide image - you CAN via image generation.`;
-    let messages=[{role:"system",content:system}];
-    if(hasImg) messages.push({role:"user",content:[{type:"text",text:text||"Explain"}, {type:"image_url",image_url:{url:imgSend}}]});
-    else messages.push({role:"user",content:text});
-    const r=await fetch("https://text.pollinations.ai/openai",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({model:"openai",messages})});
-    const d=await r.json();
-    document.querySelector("#chat .msg.bot:last-child").remove();
-    const ans=d.choices[0].message.content;
-    addHTML(ans+"<br><button onclick='speak(`"+ans.replace(/`/g,'').replace(/'/g,'').slice(0,300)+"`)'>🔊 Listen</button>",'bot');
-  }catch(e){document.querySelector("#chat .msg.bot:last-child").remove(); add("Error: "+e.message,'bot');}
+const input=document.getElementById('q');const text=input.value.trim();if(!text&&!IMG)return;
+add(text||"📸",'user');input.value='';const imgSend=IMG;const hasImg=!!IMG;clearImg();
+const langText=document.getElementById('langSel').options[document.getElementById('langSel').selectedIndex].text;
+add('Thinking...','bot');
+try{
+if(isImageRequest(text)||MODE==='image'){
+let prompt=text.replace(/send me|picture of|pic of|image of|photo of|show me/gi,'').trim()||text;
+const url="https://image.pollinations.ai/prompt/"+encodeURIComponent(prompt)+"?width=512&height=512&nologo=true&seed="+Math.floor(Math.random()*99999);
+document.querySelector("#chat .msg.bot:last-child").remove();
+addHTML("✅ <b>"+prompt+"</b><br><img src='"+url+"'><br><button onclick='speak(`"+prompt.replace(/'/g,'')+"`)'>🔊 Listen</button>",'bot');
+return;
 }
-function add(t,c){ const d=document.createElement('div'); d.className='msg '+c; d.textContent=t; document.getElementById('chat').appendChild(d); document.getElementById('chat').scrollTop=999999; }
-function addHTML(t,c){ const d=document.createElement('div'); d.className='msg '+c; d.innerHTML=t; document.getElementById('chat').appendChild(d); document.getElementById('chat').scrollTop=999999; }
-document.getElementById('q').addEventListener('keydown',e=>{if(e.key==='Enter')ask()});
-</script>
-</body>
-</html>
+let system=`You are TUMAI-SA. Reply in ${langText}. Be fast. MODE=${MODE}. Never say sorry about images.`;
+let messages=[{role:"system",content:system}];
+if(hasImg)messages.push({role:"user",content:[{type:"text",text:text||"Explain
