@@ -3,73 +3,134 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>TUMAI-SA All Languages</title>
+<title>TUMAI-SA 100 Languages</title>
 <style>
 *{box-sizing:border-box} body{font-family:sans-serif;margin:0;height:100vh;display:flex;flex-direction:column;background:#fff}
-header{background:#000;color:#00E5FF;padding:12px;text-align:center;font-weight:900}
-#langs{display:flex;gap:6px;overflow:auto;padding:8px;background:#111}
-#langs button{padding:6px 12px;border-radius:20px;border:1px solid #333;background:#222;color:#fff;white-space:nowrap}
-#langs button.active{background:#00E5FF;color:#000}
-#chat{flex:1;overflow:auto;padding:16px;display:flex;flex-direction:column;gap:12px}
-.msg{padding:12px 16px;border-radius:18px;max-width:85%;line-height:1.5}
+header{background:#000;color:#00E5FF;padding:10px;text-align:center;font-weight:900;font-size:14px}
+#bar2{display:flex;gap:5px;padding:6px;background:#111}
+select{flex:1;padding:8px;border-radius:20px;border:1px solid #333;background:#222;color:#fff}
+#tools{display:flex;gap:5px;overflow:auto;padding:6px;background:#222}
+#tools button{padding:6px 10px;border-radius:20px;border:1px solid #444;background:#333;color:#fff;font-size:11px;white-space:nowrap}
+#tools button.active{background:#00E5FF;color:#000}
+#chat{flex:1;overflow:auto;padding:12px;display:flex;flex-direction:column;gap:10px}
+.msg{padding:10px 14px;border-radius:16px;max-width:90%;line-height:1.5;white-space:pre-wrap;font-size:14px}
 .user{align-self:flex-end;background:#000;color:#00E5FF}
 .bot{align-self:flex-start;background:#f3f4f6;border:1px solid #e5e7eb}
-#bar{display:flex;padding:12px;gap:8px;border-top:1px solid #eee}
-input{flex:1;padding:12px 16px;border:1px solid #ddd;border-radius:24px}
-button.send{background:#000;color:#00E5FF;border:0;padding:12px 20px;border-radius:24px;font-weight:800}
+.msg img{max-width:100%;border-radius:12px;margin-top:8px}
+#bar{display:flex;padding:8px;gap:5px;border-top:1px solid #eee}
+input{flex:1;padding:11px 14px;border:1px solid #ddd;border-radius:24px}
+button.icon{width:38px;height:38px;border-radius:50%;border:1px solid #ddd;background:#fff}
+button.send{background:#000;color:#00E5FF;border:0;padding:10px 16px;border-radius:24px;font-weight:800}
+#preview{display:none;padding:6px;background:#f9f9f9;gap:6px;align-items:center}
+#preview img{height:50px;border-radius:6px}
 </style>
 </head>
 <body>
-<header>🤖 TUMAI-SA — All Languages</header>
-<div id="langs">
-<button onclick="setLang('en')" class="active">English</button>
-<button onclick="setLang('st')">Sesotho</button>
-<button onclick="setLang('zu')">Zulu</button>
-<button onclick="setLang('af')">Afrikaans</button>
-<button onclick="setLang('xh')">Xhosa</button>
-<button onclick="setLang('fa')">فارسی</button>
-<button onclick="setLang('ar')">العربية</button>
-<button onclick="setLang('fr')">Français</button>
-<button onclick="setLang('es')">Español</button>
-<button onclick="setLang('pt')">Português</button>
+<header>🔥 TUMAI-SA — 100+ Languages + SUPER AI</header>
+<div id="bar2">
+<select id="langSel" onchange="setLang()">
+<option value="en">🇬🇧 English</option>
+<option value="st">🇿🇦 Sesotho</option>
+<option value="nso">🇿🇦 Sepedi</option>
+<option value="tn">🇿🇦 Setswana</option>
+<option value="zu">🇿🇦 Zulu</option>
+<option value="xh">🇿🇦 Xhosa</option>
+<option value="af">🇿🇦 Afrikaans</option>
+<option value="ts">🇿🇦 Tsonga</option>
+<option value="ve">🇿🇦 Venda</option>
+<option value="nr">🇿🇦 Ndebele</option>
+<option value="sw">🇹🇿 Swahili</option>
+<option value="fa">🇮🇷 فارسی - Persian</option>
+<option value="ar">🇸🇦 العربية - Arabic</option>
+<option value="tr">🇹🇷 Türkçe</option>
+<option value="ur">🇵🇰 اردو</option>
+<option value="hi">🇮🇳 हिन्दी</option>
+<option value="bn">🇧🇩 বাংলা</option>
+<option value="zh">🇨🇳 中文</option>
+<option value="ja">🇯🇵 日本語</option>
+<option value="ko">🇰🇷 한국어</option>
+<option value="fr">🇫🇷 Français</option>
+<option value="de">🇩🇪 Deutsch</option>
+<option value="es">🇪🇸 Español</option>
+<option value="pt">🇵🇹 Português</option>
+<option value="it">🇮🇹 Italiano</option>
+<option value="ru">🇷🇺 Русский</option>
+<option value="nl">🇳🇱 Nederlands</option>
+<option value="pl">🇵🇱 Polski</option>
+<option value="id">🇮🇩 Indonesia</option>
+<option value="ms">🇲🇾 Melayu</option>
+<option value="th">🇹🇭 ไทย</option>
+<option value="vi">🇻🇳 Tiếng Việt</option>
+<option value="el">🇬🇷 Ελληνικά</option>
+<option value="he">🇮🇱 עברית</option>
+<option value="ha">🇳🇬 Hausa</option>
+<option value="yo">🇳🇬 Yoruba</option>
+<option value="am">🇪🇹 Amharic</option>
+<option value="ku">Kurdish</option>
+<option value="ps">Pashto</option>
+<option value="ku">Sorani</option>
+</select>
 </div>
-<div id="chat"><div class="msg bot">Dumela! Hello! Salam! I am TUMAI-SA. Choose your language on top — I speak ALL languages!</div></div>
-<div id="bar"><input id="q" placeholder="Ask in any language..."><button class="send" onclick="ask()">Send</button></div>
+<div id="tools">
+<button onclick="setMode('auto')" class="active" id="m-auto">🤖 Auto</button>
+<button onclick="setMode('homework')" id="m-homework">📚 Homework</button>
+<button onclick="setMode('post')" id="m-post">📱 Post</button>
+<button onclick="setMode('image')" id="m-image">🎨 Image</button>
+<button onclick="setMode('code')" id="m-code">💻 Code</button>
+<button onclick="setMode('essay')" id="m-essay">✍️ Essay</button>
+</div>
+<div id="chat"><div class="msg bot">🌍 ALL 100+ LANGUAGES READY!
+
+Choose language from dropdown top ☝️
+I speak: Sesotho, Sepedi, Setswana, Zulu, Xhosa, Afrikaans, فارسی, عربي, Türkçe, اردو, हिन्दी, 中文, Français, Español, Hausa, Swahili... EVERY language!
+
+📚 Homework in any language
+📱 Posts in any language
+🎨 Images from any language description
+🖼️ + Pictures
+
+Select language now and ask!</div></div>
+<div id="preview"><img id="prevImg"><button onclick="clearImg()">❌</button></div>
+<div id="bar">
+<button class="icon" onclick="document.getElementById('fileImg').click()">🖼️</button>
+<input id="q" placeholder="Type in ANY language...">
+<button class="send" onclick="ask()">Send</button>
+</div>
+<input type="file" id="fileImg" accept="image/*" hidden>
 <script>
-let LANG='en';
-const names={en:'English',st:'Sesotho',zu:'Zulu',af:'Afrikaans',xh:'Xhosa',fa:'Persian Farsi',ar:'Arabic',fr:'French',es:'Spanish',pt:'Portuguese'};
-function setLang(l){
-  LANG=l;
-  document.querySelectorAll('#langs button').forEach(b=>b.classList.remove('active'));
-  event.target.classList.add('active');
-  add("Language changed to "+names[l]+" — Talk to me in "+names[l]+"!","bot");
-}
+let LANG='en'; let MODE='auto'; let IMG=null;
+function setLang(){ LANG=document.getElementById('langSel').value; const txt=document.getElementById('langSel').options[document.getElementById('langSel').selectedIndex].text; add("✅ "+txt+" — I will reply in "+txt,'bot'); }
+function setMode(m){MODE=m; document.querySelectorAll('#tools button').forEach(b=>b.classList.remove('active')); document.getElementById('m-'+m).classList.add('active');}
+function clearImg(){IMG=null; document.getElementById('preview').style.display='none';}
+document.getElementById('fileImg').addEventListener('change',e=>{const f=e.target.files[0]; if(!f)return; const r=new FileReader(); r.onload=ev=>{IMG=ev.target.result; document.getElementById('prevImg').src=IMG; document.getElementById('preview').style.display='flex';}; r.readAsDataURL(f);});
+
 async function ask(){
-  const i=document.getElementById('q');
-  const t=i.value.trim(); if(!t)return;
-  add(t,'user'); i.value='';
-  add('Thinking...','bot');
+  const input=document.getElementById('q'); const text=input.value.trim(); if(!text && !IMG) return;
+  add(text||"📸",'user'); input.value=''; const imgSend=IMG; const hasImg=!!IMG; clearImg();
+  const langText=document.getElementById('langSel').options[document.getElementById('langSel').selectedIndex].text;
+  add('Thinking in '+langText+'...','bot');
   try{
-    const r=await fetch("https://text.pollinations.ai/openai",{
-      method:"POST",
-      headers:{"Content-Type":"application/json"},
-      body:JSON.stringify({
-        model:"openai",
-        messages:[
-          {role:"system",content:`You are TUMAI-SA by Itumeleng Maphakisa from Steynsrus. Reply in ${names[LANG]} language (${LANG}). If user speaks other language, auto-detect and reply in same language. Be friendly, South African pride, helpful.`},
-          {role:"user",content:t}
-        ]
-      })
-    });
+    if(MODE==='image' || /create image|تصویر|setshwantsho|isithombe/i.test(text)){
+      let prompt=text.replace(/create image|تصویر|setshwantsho|isithombe/i,'').trim()||text;
+      const url="https://image.pollinations.ai/prompt/"+encodeURIComponent(prompt)+" ?width=768&height=768&nologo=true&seed="+Math.floor(Math.random()*10000);
+      document.querySelector("#chat .msg.bot:last-child").remove();
+      addHTML("🎨 "+prompt+" ("+langText+"):\n<img src='"+url+"'>",'bot'); return;
+    }
+    let system=`You are TUMAI-SA SUPER AI by Itumeleng Maphakisa. ALWAYS reply in ${langText} language code ${LANG}. If user writes in other language, detect and reply in that language. MODE=${MODE}. Do everything: homework step-by-step, viral posts, code, essays, math, translate.`;
+    let messages=[{role:"system",content:system}];
+    if(hasImg) messages.push({role:"user",content:[{type:"text",text:text||"Explain"}, {type:"image_url",image_url:{url:imgSend}}]});
+    else messages.push({role:"user",content:text});
+    const r=await fetch("https://text.pollinations.ai/openai",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({model:"openai",messages})});
     const d=await r.json();
     document.querySelector("#chat .msg.bot:last-child").remove();
     add(d.choices[0].message.content,'bot');
   }catch(e){
     document.querySelector("#chat .msg.bot:last-child").remove();
-    add("Free mode ("+names[LANG]+"): You said: "+t+". I am TUMAI-SA, built by Itumeleng! I speak all languages — English, Sesotho, Farsi, etc. Ask me again!","bot");
+    add("Error: "+e.message,'bot');
   }
 }
 function add(t,c){ const d=document.createElement('div'); d.className='msg '+c; d.textContent=t; document.getElementById('chat').appendChild(d); document.getElementById('chat').scrollTop=999999; }
+function addHTML(t,c){ const d=document.createElement('div'); d.className='msg '+c; d.innerHTML=t; document.getElementById('chat').appendChild(d); document.getElementById('chat').scrollTop=999999; }
 document.getElementById('q').addEventListener('keydown',e=>{if(e.key==='Enter')ask()});
 </script>
 </body>
