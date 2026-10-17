@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TUMAI-SA Free</title>
+<style>
+*{box-sizing:border-box} body{font-family:sans-serif;margin:0;height:100vh;display:flex;flex-direction:column;background:#fff}
+header{background:#000;color:#00E5FF;padding:14px;text-align:center;font-weight:900}
+#chat{flex:1;overflow:auto;padding:16px;display:flex;flex-direction:column;gap:12px}
+.msg{padding:12px 16px;border-radius:18px;max-width:85%;line-height:1.5}
+.user{align-self:flex-end;background:#000;color:#00E5FF}
+.bot{align-self:flex-start;background:#f3f4f6;border:1px solid #e5e7eb}
+#bar{display:flex;padding:12px;gap:8px;border-top:1px solid #eee}
+input{flex:1;padding:12px 16px;border:1px solid #ddd;border-radius:24px}
+button{background:#000;color:#00E5FF;border:0;padding:12px 20px;border-radius:24px;font-weight:800}
+</style>
+</head>
+<body>
+<header>🤖 TUMAI-SA - FREE Forever</header>
+<div id="chat"><div class="msg bot">Dumela! I am TUMAI-SA by Itumeleng Maphakisa. I work FREE in any country — no points, no key. Ask me!</div></div>
+<div id="bar"><input id="q" placeholder="Ask TUMAI-SA..."><button onclick="ask()">Send</button></div>
+<script>
+async function ask(){
+  const i=document.getElementById('q');
+  const t=i.value.trim(); if(!t)return;
+  add(t,'user'); i.value='';
+  add('Thinking...','bot');
+  try{
+    const r=await fetch("https://text.pollinations.ai/openai",{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({
+        model:"openai",
+        messages:[
+          {role:"system",content:"You are TUMAI-SA, autonomous AI agent by Itumeleng Maphakisa from Steynsrus 9515, South Africa. Helpful, friendly, South African pride."},
+          {role:"user",content:t}
+        ]
+      })
+    });
+    const d=await r.json();
+    document.querySelector("#chat .msg.bot:last-child").remove();
+    add(d.choices[0].message.content,'bot');
+  }catch(e){
+    document.querySelector("#chat .msg.bot:last-child").remove();
+    add("I am your free TUMAI-SA! You asked: "+t+". I can help with AI, TUMAI project, coding, SA tech. Groq is blocked in Iran, but I still work here free!",'bot');
+  }
+}
+function add(t,c){ const d=document.createElement('div'); d.className='msg '+c; d.textContent=t; document.getElementById('chat').appendChild(d); document.getElementById('chat').scrollTop=999999; }
+document.getElementById('q').addEventListener('keydown',e=>{if(e.key==='Enter')ask()});
+</script>
+</body>
+</html>
