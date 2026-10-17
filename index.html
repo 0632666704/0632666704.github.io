@@ -3,23 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#000000">
-  <title>TUMAI - Student Platform</title>
+  <meta name="theme-color" content="#ffffff">
+  <title>Itumeleng Maphakisa | TUMAI-SA</title>
   <link rel="manifest" href="manifest.json">
-  <link rel="icon" type="image/png" href="icon-192x192.png">
-  <link rel="apple-touch-icon" href="icon-512x512.png">
+  <link rel="icon" href="icon-192x192.png">
   <style>
-    body { margin:0; background:#000; color:#fff; font-family:sans-serif; display:flex; flex-direction:column; align-items:center; justify-content:center; height:100vh; text-align:center; }
-    h1 { color:#00E5FF; font-size:48px; }
-    img { width:200px; height:200px; border-radius:30px; }
-    button { background:#00E5FF; color:#000; padding:15px 30px; border:none; border-radius:12px; font-size:18px; font-weight:bold; margin-top:20px; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background:#ffffff; color:#000000; padding:32px 24px; max-width:800px; margin:0 auto; line-height:1.6; }
+    h1 { font-size:48px; font-weight:800; line-height:1.1; margin-bottom:10px; letter-spacing:-1px; }
+    h1 span { display:block; }
+    .subtitle { font-size:20px; font-weight:700; margin-top:40px; margin-bottom:20px; }
+    p { font-size:18px; color:#222; margin-bottom:24px; }
+    b { font-weight:700; }
+    .card { border:1.5px solid #e5e7eb; border-radius:16px; padding:24px; margin-top:16px; }
+    .card h2 { font-size:26px; font-weight:800; margin-bottom:16px; }
+    .card a { color:#2563eb; text-decoration:underline; font-size:16px; font-weight:500; }
+    .card a:hover { color:#1d4ed8; }
+    .sep { margin:0 6px; color:#666; }
+    @media(max-width:600px){ h1{font-size:36px} p{font-size:17px} }
   </style>
 </head>
 <body>
-  <img src="icon-512x512.png" alt="TUMAI">
-  <h1>TUMAI</h1>
-  <p>Student Platform</p>
-  <button onclick="location.reload()">Launch App</button>
+  <h1><span>Itumeleng</span><span>Maphakisa</span></h1>
+  
+  <div class="subtitle">AI Creator | Founder of TUMAI-SA</div>
+  
+  <p>I am <b>Itumeleng Maphakisa</b>, AI Creator from Steynsrus 9515, Free State. Builder of TUMAI-SA autonomous AI agent.</p>
+  
+  <div class="card">
+    <h2>TUMAI-SA Project</h2>
+    <a href="https://github.com/0632666704/TUMAI-SA" target="_blank">GitHub - TUMAI-SA</a><span class="sep">|</span><a href="https://dev.to" target="_blank">My Dev.to Article</a>
+  </div>
+
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('sw.js');
