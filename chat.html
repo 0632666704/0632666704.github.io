@@ -3,24 +3,47 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>TUMAI-SA Free</title>
+<title>TUMAI-SA All Languages</title>
 <style>
 *{box-sizing:border-box} body{font-family:sans-serif;margin:0;height:100vh;display:flex;flex-direction:column;background:#fff}
-header{background:#000;color:#00E5FF;padding:14px;text-align:center;font-weight:900}
+header{background:#000;color:#00E5FF;padding:12px;text-align:center;font-weight:900}
+#langs{display:flex;gap:6px;overflow:auto;padding:8px;background:#111}
+#langs button{padding:6px 12px;border-radius:20px;border:1px solid #333;background:#222;color:#fff;white-space:nowrap}
+#langs button.active{background:#00E5FF;color:#000}
 #chat{flex:1;overflow:auto;padding:16px;display:flex;flex-direction:column;gap:12px}
 .msg{padding:12px 16px;border-radius:18px;max-width:85%;line-height:1.5}
 .user{align-self:flex-end;background:#000;color:#00E5FF}
 .bot{align-self:flex-start;background:#f3f4f6;border:1px solid #e5e7eb}
 #bar{display:flex;padding:12px;gap:8px;border-top:1px solid #eee}
 input{flex:1;padding:12px 16px;border:1px solid #ddd;border-radius:24px}
-button{background:#000;color:#00E5FF;border:0;padding:12px 20px;border-radius:24px;font-weight:800}
+button.send{background:#000;color:#00E5FF;border:0;padding:12px 20px;border-radius:24px;font-weight:800}
 </style>
 </head>
 <body>
-<header>🤖 TUMAI-SA - FREE Forever</header>
-<div id="chat"><div class="msg bot">Dumela! I am TUMAI-SA by Itumeleng Maphakisa. I work FREE in any country — no points, no key. Ask me!</div></div>
-<div id="bar"><input id="q" placeholder="Ask TUMAI-SA..."><button onclick="ask()">Send</button></div>
+<header>🤖 TUMAI-SA — All Languages</header>
+<div id="langs">
+<button onclick="setLang('en')" class="active">English</button>
+<button onclick="setLang('st')">Sesotho</button>
+<button onclick="setLang('zu')">Zulu</button>
+<button onclick="setLang('af')">Afrikaans</button>
+<button onclick="setLang('xh')">Xhosa</button>
+<button onclick="setLang('fa')">فارسی</button>
+<button onclick="setLang('ar')">العربية</button>
+<button onclick="setLang('fr')">Français</button>
+<button onclick="setLang('es')">Español</button>
+<button onclick="setLang('pt')">Português</button>
+</div>
+<div id="chat"><div class="msg bot">Dumela! Hello! Salam! I am TUMAI-SA. Choose your language on top — I speak ALL languages!</div></div>
+<div id="bar"><input id="q" placeholder="Ask in any language..."><button class="send" onclick="ask()">Send</button></div>
 <script>
+let LANG='en';
+const names={en:'English',st:'Sesotho',zu:'Zulu',af:'Afrikaans',xh:'Xhosa',fa:'Persian Farsi',ar:'Arabic',fr:'French',es:'Spanish',pt:'Portuguese'};
+function setLang(l){
+  LANG=l;
+  document.querySelectorAll('#langs button').forEach(b=>b.classList.remove('active'));
+  event.target.classList.add('active');
+  add("Language changed to "+names[l]+" — Talk to me in "+names[l]+"!","bot");
+}
 async function ask(){
   const i=document.getElementById('q');
   const t=i.value.trim(); if(!t)return;
@@ -33,7 +56,7 @@ async function ask(){
       body:JSON.stringify({
         model:"openai",
         messages:[
-          {role:"system",content:"You are TUMAI-SA, autonomous AI agent by Itumeleng Maphakisa from Steynsrus 9515, South Africa. Helpful, friendly, South African pride."},
+          {role:"system",content:`You are TUMAI-SA by Itumeleng Maphakisa from Steynsrus. Reply in ${names[LANG]} language (${LANG}). If user speaks other language, auto-detect and reply in same language. Be friendly, South African pride, helpful.`},
           {role:"user",content:t}
         ]
       })
@@ -43,7 +66,7 @@ async function ask(){
     add(d.choices[0].message.content,'bot');
   }catch(e){
     document.querySelector("#chat .msg.bot:last-child").remove();
-    add("I am your free TUMAI-SA! You asked: "+t+". I can help with AI, TUMAI project, coding, SA tech. Groq is blocked in Iran, but I still work here free!",'bot');
+    add("Free mode ("+names[LANG]+"): You said: "+t+". I am TUMAI-SA, built by Itumeleng! I speak all languages — English, Sesotho, Farsi, etc. Ask me again!","bot");
   }
 }
 function add(t,c){ const d=document.createElement('div'); d.className='msg '+c; d.textContent=t; document.getElementById('chat').appendChild(d); document.getElementById('chat').scrollTop=999999; }
