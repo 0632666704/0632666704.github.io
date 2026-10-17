@@ -1,0 +1,17 @@
+{
+  "name": "TUMAI-SA",
+  "short_name": "TUMAI",
+  "description": "Autonomous AI from Steynsrus 9515 by Itumeleng Maphakisa",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#00E5FF",
+  "icons": [
+    {
+      "src": "icon-1024.jpg",
+      "sizes": "1024x1024",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ]
+}
