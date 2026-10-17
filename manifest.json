@@ -1,21 +1,21 @@
 {
   "name": "TUMAI - Student Platform",
   "short_name": "TUMAI",
-  "description": "TUMAI Student Platform",
+  "description": "TUMAI Student Platform for TUM Students",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#00E5FF",
   "icons": [
-    {"src": "icon-72x72.png", "sizes": "72x72", "type": "image/png", "purpose": "any"},
-    {"src": "icon-96x96.png", "sizes": "96x96", "type": "image/png", "purpose": "any"},
-    {"src": "icon-128x128.png", "sizes": "128x128", "type": "image/png", "purpose": "any"},
-    {"src": "icon-144x144.png", "sizes": "144x144", "type": "image/png", "purpose": "any"},
-    {"src": "icon-152x152.png", "sizes": "152x152", "type": "image/png", "purpose": "any"},
-    {"src": "icon-192x192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
-    {"src": "icon-384x384.png", "sizes": "384x384", "type": "image/png", "purpose": "any"},
-    {"src": "icon-512x512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"},
-    {"src": "icon-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"},
-    {"src": "icon-1024x1024.png", "sizes": "1024x1024", "type": "image/png", "purpose": "any maskable"}
+    {"src": "icon-72.jpg", "sizes": "72x72", "type": "image/jpeg", "purpose": "any"},
+    {"src": "icon-96.jpg", "sizes": "96x96", "type": "image/jpeg", "purpose": "any"},
+    {"src": "icon-128.jpg", "sizes": "128x128", "type": "image/jpeg", "purpose": "any"},
+    {"src": "icone-144.jpg", "sizes": "144x144", "type": "image/jpeg", "purpose": "any"},
+    {"src": "icon-152.jpg", "sizes": "152x152", "type": "image/jpeg", "purpose": "any"},
+    {"src": "icon-192.jpg", "sizes": "192x192", "type": "image/jpeg", "purpose": "any"},
+    {"src": "icon-384.jpg", "sizes": "384x384", "type": "image/jpeg", "purpose": "any"},
+    {"src": "icon-512%20.jpg", "sizes": "512x512", "type": "image/jpeg", "purpose": "any"},
+    {"src": "icon-512maskable%20.jpg", "sizes": "512x512", "type": "image/jpeg", "purpose": "maskable"},
+    {"src": "icon-1024.jpg", "sizes": "1024x1024", "type": "image/jpeg", "purpose": "any"}
   ]
 }
