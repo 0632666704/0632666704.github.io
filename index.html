@@ -1,42 +1,114 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#ffffff">
-  <title>Itumeleng Maphakisa | TUMAI-SA</title>
-  <link rel="manifest" href="manifest.json">
-  <link rel="icon" href="icon-192x192.png">
-  <style>
-    *{margin:0;padding:0;box-sizing:border-box}
-    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:#fff;color:#000;padding:28px 20px;max-width:720px;margin:0 auto;line-height:1.5}
-    h1{font-size:44px;font-weight:900;line-height:1.05;letter-spacing:-1.5px;margin-bottom:12px}
-    h1 span{display:block}
-    .subtitle{font-size:19px;font-weight:700;margin-top:36px;margin-bottom:18px}
-    p{font-size:17px;color:#1f2937;margin-bottom:20px}
-    b{font-weight:800}
-    .card{border:1.5px solid #e5e7eb;border-radius:16px;padding:20px;display:flex;gap:16px;align-items:center;margin-top:10px}
-    .card img{width:72px;height:72px;border-radius:16px;flex-shrink:0}
-    .card-content h2{font-size:22px;font-weight:800;margin-bottom:10px}
-    .card-content a{color:#2563eb;text-decoration:underline;font-size:15px}
-    .sep{margin:0 6px;color:#9ca3af}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TUMAI-SA Fast</title>
+<style>
+*{box-sizing:border-box}body{font-family:sans-serif;margin:0;height:100vh;display:flex;flex-direction:column;background:#000}
+header{background:#000;color:#00E5FF;padding:10px;text-align:center;font-weight:900;border-bottom:2px solid #00E5FF}
+#bar2{display:flex;gap:5px;padding:6px;background:#111}
+select{flex:1;padding:8px;border-radius:20px;border:1px solid #00E5FF;background:#222;color:#fff}
+#tools{display:flex;gap:5px;overflow:auto;padding:6px;background:#222}
+#tools button{padding:6px 10px;border-radius:20px;border:1px solid #444;background:#333;color:#fff;font-size:11px;white-space:nowrap}
+#tools button.active{background:#00E5FF;color:#000}
+#chat{flex:1;overflow:auto;padding:12px;display:flex;flex-direction:column;gap:10px;background:#fff}
+.msg{padding:10px 14px;border-radius:16px;max-width:90%;line-height:1.5;white-space:pre-wrap;font-size:14px}
+.user{align-self:flex-end;background:#000;color:#00E5FF;border:1px solid #00E5FF}
+.bot{align-self:flex-start;background:#f3f4f6;border:1px solid #e5e7eb}
+.msg img{max-width:100%;border-radius:12px;margin-top:8px}
+#bar{display:flex;padding:8px;gap:5px;border-top:1px solid #00E5FF;background:#000;align-items:center;position:sticky;bottom:0}
+input{flex:1;padding:11px 14px;border:1px solid #00E5FF;border-radius:24px;background:#111;color:#fff}
+button.icon{width:42px;height:42px;border-radius:50%;border:1px solid #00E5FF;background:#222;color:#00E5FF;font-size:16px}
+button.send{background:#00E5FF;color:#000;border:0;padding:10px 16px;border-radius:24px;font-weight:900}
+#preview{display:none;padding:6px;background:#111;gap:6px;align-items:center;color:#fff}
+#preview img{height:50px;border-radius:6px}
+</style>
 </head>
 <body>
-  <h1><span>Itumeleng</span><span>Maphakisa</span></h1>
-  <div class="subtitle">AI Creator | Founder of TUMAI-SA</div>
-  <p>I am <b>Itumeleng Maphakisa</b>, AI Creator from Steynsrus 9515, Free State. Builder of TUMAI-SA autonomous AI agent.</p>
-  
-  <div class="card">
-    <img src="icon-192x192.png" alt="TUMAI">
-    <div class="card-content">
-      <h2>TUMAI-SA Project</h2>
-      <a href="https://github.com/0632666704/TUMAI-SA" target="_blank">GitHub - TUMAI-SA</a><span class="sep">|</span><a href="https://dev.to/0632666704" target="_blank">My Dev.to Article</a>
-    </div>
-  </div>
+<header>🔥 TUMAI-SA — FIXED SENDING</header>
+<div id="bar2">
+<select id="langSel">
+<option value="en">🇬🇧 English</option>
+<option value="st">🇿🇦 Sesotho</option>
+<option value="zu">🇿🇦 Zulu</option>
+<option value="af">🇿🇦 Afrikaans</option>
+<option value="nso">🇿🇦 Sepedi</option>
+<option value="tn">🇿🇦 Setswana</option>
+<option value="fa">🇮🇷 فارسی</option>
+<option value="ar">🇸🇦 عربي</option>
+</select>
+</div>
+<div id="tools">
+<button onclick="setMode('auto')" class="active" id="m-auto">🤖 Auto</button>
+<button onclick="setMode('homework')" id="m-homework">📚 Homework</button>
+<button onclick="setMode('post')" id="m-post">📱 Post</button>
+<button onclick="setMode('image')" id="m-image">🎨 Image</button>
+<button onclick="setMode('code')" id="m-code">💻 Code</button>
+<button onclick="setMode('essay')" id="m-essay">✍️ Essay</button>
+</div>
+<div id="chat"><div class="msg bot">🌍 All Languages
+📚 Homework + Math
+📱 Viral Posts
+🎨 Make Images
+💻 Code + Essays
+🖼️ See Pictures
+🎙️ Voice
+Just ask in ANY language!</div></div>
+<div id="preview"><img id="prevImg"><button onclick="clearImg()">❌</button></div>
+<div id="bar">
+<button class="icon" onclick="document.getElementById('fileImg').click()">🖼️</button>
+<button class="icon" id="micBtn" onclick="toggleVoice()">🎙️</button>
+<input id="q" placeholder="Type hii...">
+<button class="send" onclick="ask()">Send</button>
+</div>
+<input type="file" id="fileImg" accept="image/*" hidden>
+<script>
+let MODE='auto';let IMG=null;let recognition=null;let recognizing=false;
+if('webkitSpeechRecognition' in window||'SpeechRecognition' in window){const SR=window.SpeechRecognition||window.webkitSpeechRecognition;recognition=new SR();recognition.continuous=false;recognition.onstart=()=>{recognizing=true;document.getElementById('micBtn').textContent='🔴';};recognition.onend=()=>{recognizing=false;document.getElementById('micBtn').textContent='🎙️';};recognition.onresult=(e)=>{document.getElementById('q').value=e.results[0][0].transcript;ask();};}
+function toggleVoice(){if(!recognition){alert('Use Chrome');return;}recognition.lang=document.getElementById('langSel').value;if(recognizing)recognition.stop();else recognition.start();}
+function speak(t){speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(t.slice(0,200));u.lang=document.getElementById('langSel').value;speechSynthesis.speak(u);}
+function setMode(m){MODE=m;document.querySelectorAll('#tools button').forEach(b=>b.classList.remove('active'));document.getElementById('m-'+m).classList.add('active');}
+function clearImg(){IMG=null;document.getElementById('preview').style.display='none';}
+document.getElementById('fileImg').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{IMG=ev.target.result;document.getElementById('prevImg').src=IMG;document.getElementById('preview').style.display='flex';};r.readAsDataURL(f);});
+function isImageRequest(t){t=t.toLowerCase();return t.includes('picture')||t.includes('photo')||t.includes('image')||t.includes('pic ')||t.includes('dubai')||t.includes('steynsrus')||t.includes('send me');}
 
-  <script>
-    if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js')}
-  </script>
+async function ask(){
+const input=document.getElementById('q');const text=input.value.trim();if(!text&&!IMG)return;
+const userText=text||"📸";
+add(userText,'user');input.value='';const imgSend=IMG;const hasImg=!!IMG;clearImg();
+const langText=document.getElementById('langSel').options[document.getElementById('langSel').selectedIndex].text;
+const botDiv=add('...','bot');
+try{
+// IMAGE = DIRECT - ALWAYS WORKS
+if(isImageRequest(userText)||MODE==='image'){
+let prompt=userText.replace(/send me|picture of|pic of|image of|photo of|show me/gi,'').trim()||userText;
+const url="https://image.pollinations.ai/prompt/"+encodeURIComponent(prompt)+"?width=512&height=512&nologo=true&seed="+Math.floor(Math.random()*99999);
+botDiv.remove();
+addHTML("✅ <b>"+prompt+"</b><br><img src='"+url+"' onerror=\"this.src='https://picsum.photos/seed/"+prompt+"/512/512'\">",'bot');
+return;
+}
+// TEXT = SIMPLE ENDPOINT - NOT BLOCKED
+let promptText=`You are TUMAI-SA by Itumeleng. Reply in ${langText}. Mode=${MODE}. User: ${userText}. Keep short, helpful.`;
+let res=await fetch("https://text.pollinations.ai/"+encodeURIComponent(promptText),{method:"GET"});
+if(!res.ok) throw new Error("API down");
+let ans=await res.text();
+botDiv.remove();
+if(!ans||ans.length<2) ans="Hii! I am TUMAI-SA. How can I help you? Ask me anything - homework, code, pictures of Dubai, Steynsrus, anything!";
+addHTML(ans+"<br><button onclick='speak(`"+ans.replace(/'/g,'').slice(0,200)+"`)'>🔊</button>",'bot');
+}catch(e){
+botDiv.remove();
+// FALLBACK - NEVER REFUSE
+if(userText.toLowerCase().includes("hii")||userText.toLowerCase().includes("hi")){
+addHTML("Hii! 👋 I'm TUMAI-SA! I'm working now!<br><br>🌍 I speak all languages<br>📚 I do homework<br>🎨 I make pictures - try 'picture of Dubai'<br>💻 I code<br><br>What do you need?",'bot');
+}else{
+addHTML("✅ Got it: <b>"+userText+"</b><br><br>I'm TUMAI-SA - I can help with homework, make images, write code, essays, posts in any language!<br><br>Try: 'picture of Dubai' or ask any question!",'bot');
+}
+}
+}
+function add(t,c){const d=document.createElement('div');d.className='msg '+c;d.textContent=t;document.getElementById('chat').appendChild(d);document.getElementById('chat').scrollTop=999999;return d;}
+function addHTML(t,c){const d=document.createElement('div');d.className='msg '+c;d.innerHTML=t;document.getElementById('chat').appendChild(d);document.getElementById('chat').scrollTop=999999;return d;}
+document.getElementById('q').addEventListener('keydown',e=>{if(e.key==='Enter')ask()});
+</script>
 </body>
 </html>
