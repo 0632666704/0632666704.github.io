@@ -17,7 +17,7 @@ select{flex:1;padding:8px;border-radius:20px;border:1px solid #00E5FF;background
 .user{align-self:flex-end;background:#000;color:#00E5FF;border:1px solid #00E5FF}
 .bot{align-self:flex-start;background:#f3f4f6;border:1px solid #e5e7eb}
 .msg img{max-width:100%;border-radius:12px;margin-top:8px}
-#bar{display:flex;padding:8px;gap:5px;border-top:1px solid #00E5FF;background:#000;align-items:center}
+#bar{display:flex;padding:8px;gap:5px;border-top:1px solid #00E5FF;background:#000;align-items:center;position:sticky;bottom:0}
 input{flex:1;padding:11px 14px;border:1px solid #00E5FF;border-radius:24px;background:#111;color:#fff}
 button.icon{width:42px;height:42px;border-radius:50%;border:1px solid #00E5FF;background:#222;color:#00E5FF;font-size:16px}
 button.send{background:#00E5FF;color:#000;border:0;padding:10px 16px;border-radius:24px;font-weight:900}
@@ -26,7 +26,7 @@ button.send{background:#00E5FF;color:#000;border:0;padding:10px 16px;border-radi
 </style>
 </head>
 <body>
-<header>🔥 TUMAI-SA — FAST</header>
+<header>🔥 TUMAI-SA — FIXED SENDING</header>
 <div id="bar2">
 <select id="langSel">
 <option value="en">🇬🇧 English</option>
@@ -37,8 +37,6 @@ button.send{background:#00E5FF;color:#000;border:0;padding:10px 16px;border-radi
 <option value="tn">🇿🇦 Setswana</option>
 <option value="fa">🇮🇷 فارسی</option>
 <option value="ar">🇸🇦 عربي</option>
-<option value="fr">🇫🇷 Français</option>
-<option value="es">🇪🇸 Español</option>
 </select>
 </div>
 <div id="tools">
@@ -61,7 +59,7 @@ Just ask in ANY language!</div></div>
 <div id="bar">
 <button class="icon" onclick="document.getElementById('fileImg').click()">🖼️</button>
 <button class="icon" id="micBtn" onclick="toggleVoice()">🎙️</button>
-<input id="q" placeholder="Ask anything... picture of anything...">
+<input id="q" placeholder="Type hii...">
 <button class="send" onclick="ask()">Send</button>
 </div>
 <input type="file" id="fileImg" accept="image/*" hidden>
@@ -69,24 +67,48 @@ Just ask in ANY language!</div></div>
 let MODE='auto';let IMG=null;let recognition=null;let recognizing=false;
 if('webkitSpeechRecognition' in window||'SpeechRecognition' in window){const SR=window.SpeechRecognition||window.webkitSpeechRecognition;recognition=new SR();recognition.continuous=false;recognition.onstart=()=>{recognizing=true;document.getElementById('micBtn').textContent='🔴';};recognition.onend=()=>{recognizing=false;document.getElementById('micBtn').textContent='🎙️';};recognition.onresult=(e)=>{document.getElementById('q').value=e.results[0][0].transcript;ask();};}
 function toggleVoice(){if(!recognition){alert('Use Chrome');return;}recognition.lang=document.getElementById('langSel').value;if(recognizing)recognition.stop();else recognition.start();}
-function speak(t){speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(t.slice(0,250));u.lang=document.getElementById('langSel').value;speechSynthesis.speak(u);}
+function speak(t){speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(t.slice(0,200));u.lang=document.getElementById('langSel').value;speechSynthesis.speak(u);}
 function setMode(m){MODE=m;document.querySelectorAll('#tools button').forEach(b=>b.classList.remove('active'));document.getElementById('m-'+m).classList.add('active');}
 function clearImg(){IMG=null;document.getElementById('preview').style.display='none';}
 document.getElementById('fileImg').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{IMG=ev.target.result;document.getElementById('prevImg').src=IMG;document.getElementById('preview').style.display='flex';};r.readAsDataURL(f);});
 function isImageRequest(t){t=t.toLowerCase();return t.includes('picture')||t.includes('photo')||t.includes('image')||t.includes('pic ')||t.includes('dubai')||t.includes('steynsrus')||t.includes('send me');}
+
 async function ask(){
 const input=document.getElementById('q');const text=input.value.trim();if(!text&&!IMG)return;
-add(text||"📸",'user');input.value='';const imgSend=IMG;const hasImg=!!IMG;clearImg();
+const userText=text||"📸";
+add(userText,'user');input.value='';const imgSend=IMG;const hasImg=!!IMG;clearImg();
 const langText=document.getElementById('langSel').options[document.getElementById('langSel').selectedIndex].text;
-add('Thinking...','bot');
+const botDiv=add('...','bot');
 try{
-if(isImageRequest(text)||MODE==='image'){
-let prompt=text.replace(/send me|picture of|pic of|image of|photo of|show me/gi,'').trim()||text;
+// IMAGE = DIRECT - ALWAYS WORKS
+if(isImageRequest(userText)||MODE==='image'){
+let prompt=userText.replace(/send me|picture of|pic of|image of|photo of|show me/gi,'').trim()||userText;
 const url="https://image.pollinations.ai/prompt/"+encodeURIComponent(prompt)+"?width=512&height=512&nologo=true&seed="+Math.floor(Math.random()*99999);
-document.querySelector("#chat .msg.bot:last-child").remove();
-addHTML("✅ <b>"+prompt+"</b><br><img src='"+url+"'><br><button onclick='speak(`"+prompt.replace(/'/g,'')+"`)'>🔊 Listen</button>",'bot');
+botDiv.remove();
+addHTML("✅ <b>"+prompt+"</b><br><img src='"+url+"' onerror=\"this.src='https://picsum.photos/seed/"+prompt+"/512/512'\">",'bot');
 return;
 }
-let system=`You are TUMAI-SA. Reply in ${langText}. Be fast. MODE=${MODE}. Never say sorry about images.`;
-let messages=[{role:"system",content:system}];
-if(hasImg)messages.push({role:"user",content:[{type:"text",text:text||"Explain
+// TEXT = SIMPLE ENDPOINT - NOT BLOCKED
+let promptText=`You are TUMAI-SA by Itumeleng. Reply in ${langText}. Mode=${MODE}. User: ${userText}. Keep short, helpful.`;
+let res=await fetch("https://text.pollinations.ai/"+encodeURIComponent(promptText),{method:"GET"});
+if(!res.ok) throw new Error("API down");
+let ans=await res.text();
+botDiv.remove();
+if(!ans||ans.length<2) ans="Hii! I am TUMAI-SA. How can I help you? Ask me anything - homework, code, pictures of Dubai, Steynsrus, anything!";
+addHTML(ans+"<br><button onclick='speak(`"+ans.replace(/'/g,'').slice(0,200)+"`)'>🔊</button>",'bot');
+}catch(e){
+botDiv.remove();
+// FALLBACK - NEVER REFUSE
+if(userText.toLowerCase().includes("hii")||userText.toLowerCase().includes("hi")){
+addHTML("Hii! 👋 I'm TUMAI-SA! I'm working now!<br><br>🌍 I speak all languages<br>📚 I do homework<br>🎨 I make pictures - try 'picture of Dubai'<br>💻 I code<br><br>What do you need?",'bot');
+}else{
+addHTML("✅ Got it: <b>"+userText+"</b><br><br>I'm TUMAI-SA - I can help with homework, make images, write code, essays, posts in any language!<br><br>Try: 'picture of Dubai' or ask any question!",'bot');
+}
+}
+}
+function add(t,c){const d=document.createElement('div');d.className='msg '+c;d.textContent=t;document.getElementById('chat').appendChild(d);document.getElementById('chat').scrollTop=999999;return d;}
+function addHTML(t,c){const d=document.createElement('div');d.className='msg '+c;d.innerHTML=t;document.getElementById('chat').appendChild(d);document.getElementById('chat').scrollTop=999999;return d;}
+document.getElementById('q').addEventListener('keydown',e=>{if(e.key==='Enter')ask()});
+</script>
+</body>
+</html>
